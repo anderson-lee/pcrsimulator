@@ -3,5 +3,13 @@ This downloadable app is able to simulate polymerase chain reactions in DNA. It 
 
 Link to download the app: https://drive.google.com/file/d/1IuvCjOeDEQXbEGdjWCy6XAOluWbzIipS/view?usp=sharing
 
-###**Functionalities**
-This 
+**Functionalities**
+This app takes three inputs: a forward primer, a reverse primer, and a template strand. It ensures that the three oligonucleotides only contain DNA or IUPAC codes, and checks to see if the primers have a high enough melting temperature in order to not degrade during the PCR process. Then, it finds the annealing region on the 3' end of the primer by starting with the first six bases and continuing in the 5' direction until it does not match the template strand anymore. The number six was chosen here because that is theoretically the minimum number of bases you need to anneal, though a much larger annealing region is more favorable. The PCR Simulator then includes additional bases on the 5' end of the primers if necessary. It treats the template DNA as double stranded and circular. If someone would like to do iPCR (inverse PCR), they can. They could input the template strand with the known DNA in the middle, and input the primer pointing left as the forward primer and the one pointing right as the reverse primer. Then, they would end up with a strand
+
+![Figure depicting process of iPCR.](http://atlasgeneticsoncology.org/Deep/Images/LDI-PCRinCancerFig1.png)
+
+**Notes**
+The original assignment was to create an Excel Add-in that functioned as a PCR simulator. When looking into this, I found that UDFs (user-defined functions) were prohibited in Excel 2016 for Mac. Thus, the only way to create functions on a Mac would be to code them in visual basic in the VBE (visual basic editor) that is built into Excel. If a future student attempts to solve this, they would need a Windows or Linux machine, and I would advise them to use the downloadable python module xlwings, which allows them to code in python and simply point to their python file within Excel's VBE. Since I was unable to create an Excel add-in, I simply created a Macintosh app that has the same functionality. If someone with Windows wanted to use it, I uploaded my python code to this GitHub repository and they could simply download that and wrap it in Excel using xlwings. 
+
+**Acknowledgements**
+I used PyCharm to write and debug my source code, and PyQt5 to create a GUI. I used fbs to build the installer for the app. I would like to thank Professor Anderson for his guidance along the way.
